@@ -3,6 +3,8 @@ import singleSpaVue from 'single-spa-vue';
 
 import App from './App.vue';
 import router from './router';
+import { Quasar } from 'quasar'
+import quasarUserOptions from './quasar-user-options'
 
 const vueLifecycles = singleSpaVue({
   createApp,
@@ -21,6 +23,7 @@ const vueLifecycles = singleSpaVue({
     },
   },
   handleInstance(app) {
+    app.use(Quasar)
     app.use(router);
   },
 });
