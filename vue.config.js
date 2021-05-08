@@ -4,7 +4,8 @@ module.exports = {
     configureWebpack: {
         devServer: {
             // Not required, but it's often useful to run webpack-dev-server in SPA mode
-            historyApiFallback: true
+            historyApiFallback: true,
+            port: 10002
         },
         plugins: [
             // the standalone plugin works in conjunction with HtmlWebpackPlugin
