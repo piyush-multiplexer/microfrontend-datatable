@@ -4,7 +4,8 @@ module.exports = {
     configureWebpack: {
         devServer: {
             // Not required, but it's often useful to run webpack-dev-server in SPA mode
-            historyApiFallback: true
+            historyApiFallback: true,
+            port: 10002
         },
         plugins: [
             // the standalone plugin works in conjunction with HtmlWebpackPlugin
@@ -12,10 +13,10 @@ module.exports = {
 
             new StandaloneSingleSpaPlugin({
                 // required
-                appOrParcelName: "my-microfrontend-name",
+                appOrParcelName: "datatable",
 
                 // optional - strongly encouraged for single-spa applications
-                activeWhen: ['/route-prefix'],
+                activeWhen: ['/datatable'],
 
                 // optional - useful for enabling cross-microfrontend imports
                 importMapUrl: new URL("https://my-cdn.com/importmap.json"),
@@ -47,5 +48,16 @@ module.exports = {
                 importMapOverridesLocalStorageKey: null
             })
         ]
-    }
+    },
+
+    pluginOptions: {
+      quasar: {
+        importStrategy: 'kebab',
+        rtlSupport: false
+      }
+    },
+
+    transpileDependencies: [
+      'quasar'
+    ]
 }
